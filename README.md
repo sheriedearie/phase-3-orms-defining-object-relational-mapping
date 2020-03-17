@@ -31,7 +31,7 @@ There are a number of reasons why we use the ORM pattern. Two good ones are:
 ### Cutting Down on Repetition
 Let's take a look at some of the common code we might use to interact our Ruby program with our database.
 
-Let's say we have a program that helps a veterinary office keep track of the pets it treats and those pets' owners. Such a program would have an `Owners` class and `Cats` class (among classes to represent other pets). Our program surely needs to connect to a database so that the veterinary office can persist information about its pets and owners.
+Let's say we have a program that helps a veterinary office keep track of the pets it treats and those pets' owners. Such a program would have an `Owner` class and `Cat` class (among classes to represent other pets). Our program surely needs to connect to a database so that the veterinary office can persist information about its pets and owners.
 
 Our program would create a connection to the database:
 
@@ -61,7 +61,7 @@ The repetition would also occur for other SQL statements we might want to execut
 
 As programmers, you might remember, we are lazy. We don't like to repeat ourselves if we can avoid it. Repetition qualifies as a "code smell". Instead of repeating the same, or similar, code any time we want to perform common actions against our database, we can write a series of methods to abstract that behavior.
 
-For example, we can write a `.save` method on our `Cats` class that handles the common action of `INSERT`ing data into the database.
+For example, we can write a `.save` method on our `Cat` class that handles the common action of `INSERT`ing data into the database.
 
 ```ruby
 class Cat
@@ -100,7 +100,7 @@ end
 
 Here we establish the connection to our database, create two new cats and then iterate over our collection of cat instances stored in the `Cat.all` method. Inside this iteration, we use the `Cat.save` method, giving it arguments of the data specific to each cat to `INSERT` those cat records into the cats table.
 
-Now, thanks to our `Cats.save` method, we have some re-usable code––code that we can easily use again and again to "save" or `INSERT`, cat records into the database.
+Now, thanks to our `Cat.save` method, we have some re-usable code––code that we can easily use again and again to "save" or `INSERT`, cat records into the database.
 
 This is just one example of the types of methods we will learn to build as we create our ORM. *Don't worry too much about the code shown above.* We'll learn more about how and why we define our ORM methods later on. This is just a preview of the kind of method we will write to tell our classes how to talk to our database.
 
