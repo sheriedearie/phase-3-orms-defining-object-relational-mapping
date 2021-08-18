@@ -97,6 +97,8 @@ common action of `INSERT`ing data into the database.
 class Cat
 
   @@all = []
+  
+  attr_reader :name, :breed, :age
 
   def initialize(name, breed, age)
     @name = name
